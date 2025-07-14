@@ -109,7 +109,7 @@ def display_results(flights):
         logger.info(f"💰 Cheapest flight: {cheapest['airline']} - {cheapest['price']} ({cheapest['source']})")
 
 
-# ----------------- 🚀 Main Logic ----------------- #
+
 def main():
     origin = "LHE"
     destination = "KHI"
@@ -123,7 +123,7 @@ def main():
     sasta_results = []
     bookme_results = []
 
-    # Scrape SastaTicket
+
     logger.info("🔍 Scraping SastaTicket.pk...")
     try:
         sasta = SastaTicketScraper()
@@ -134,7 +134,7 @@ def main():
 
     time.sleep(2)
 
-    # Scrape Bookme
+    
     logger.info("🔍 Scraping Bookme.pk...")
     try:
         day = int(date_mmddyyyy.split("/")[1])
@@ -147,7 +147,7 @@ def main():
     except Exception as e:
         logger.error(f"❌ Bookme failed: {e}")
 
-    # Compare results
+   
     logger.info("📊 Comparing flight prices...")
     all_flights = compare_prices(sasta_results, bookme_results)
     display_results(all_flights)
@@ -169,6 +169,5 @@ def main():
     logger.info("✅ Flight comparison complete.\n")
 
 
-# ----------------- ✅ Run Script ----------------- #
 if __name__ == "__main__":
     main()
